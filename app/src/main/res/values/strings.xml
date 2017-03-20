@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">NIEC_Hackathon</string>
-    <string name="sign_up_here">
-        <u>Sign Up Here</u>
-    </string>
     <string name="title_activity_home">HomeActivity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
