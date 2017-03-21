@@ -15,6 +15,7 @@ public class SelectDevice extends AppCompatActivity implements View.OnClickListe
     //GET FROM INTENT
     String device_type="TV";
 
+
     CardView cv1,cv2,cv3,cv4;
     ImageView iv1,iv2,iv3,iv4;
     TextView tv_dev1, tv_dev2, tv_dev3, tv_dev4,tv_pri1,tv_pri2,tv_pri3,tv_pri4;
