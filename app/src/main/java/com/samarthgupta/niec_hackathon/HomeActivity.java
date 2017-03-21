@@ -56,7 +56,7 @@ public class HomeActivity extends AppCompatActivity
                     case R.id.navigation_donate:
                         break;
                 }
-                return false;
+                return true;
             }
         });
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

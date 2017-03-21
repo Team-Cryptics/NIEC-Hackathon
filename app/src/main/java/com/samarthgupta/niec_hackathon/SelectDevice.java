@@ -13,7 +13,7 @@ import com.samarthgupta.niec_hackathon.POJO.GlobalVariables;
 public class SelectDevice extends AppCompatActivity implements View.OnClickListener {
 
     //GET FROM INTENT
-    String device_type="Laptops";
+    String device_type="Tablets";
 
     GlobalVariables globalVariables = new GlobalVariables();
     CardView cv1,cv2,cv3,cv4;
