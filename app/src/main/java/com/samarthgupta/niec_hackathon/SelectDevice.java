@@ -25,7 +25,10 @@ public class SelectDevice extends AppCompatActivity {
         cv3= (CardView) findViewById(R.id.cv_3);
         cv4= (CardView) findViewById(R.id.cv_4);
 
-        iv1= (ImageView) findViewById(R.id.iv_Product1); iv2= (ImageView) findViewById(R.id.iv_Product2); iv3= (ImageView) findViewById(R.id.iv_Product3); iv4= (ImageView) findViewById(R.id.iv_Product4);
+        iv1= (ImageView) findViewById(R.id.iv_Product1);
+        iv2= (ImageView) findViewById(R.id.iv_Product2);
+        iv3= (ImageView) findViewById(R.id.iv_Product3);
+        iv4= (ImageView) findViewById(R.id.iv_Product4);
 
         tv_dev1 = (TextView) findViewById(R.id.tv_Device1);
         tv_dev2 = (TextView) findViewById(R.id.tv_Device2);
@@ -38,6 +41,7 @@ public class SelectDevice extends AppCompatActivity {
         tv_pri4 = (TextView) findViewById(R.id.tv_Price4);
 
        if(device_type.equals("Mobiles")){
+
 
            setCardViewValue("iPhone 5S 16 GB","MRP Rs.19500","iPhone 6S 32 GB","MRP Rs.56000",
                    "Samsung Galaxy S4","MRP Rs.20000","Samsung Galaxy S5","MRP Rs.42000");
