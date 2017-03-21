@@ -1,6 +1,5 @@
 package com.samarthgupta.niec_hackathon;
 
-import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -62,7 +61,7 @@ public class SelectDevice extends AppCompatActivity implements View.OnClickListe
        }
         else if(device_type.equals("Tablets")){
 
-           setCardViewValue("Lenovo Tab A6","MRP Rs.6500","Lenovo Yoga Tab D233","MRP Rs.15000","Samsung Galaxy Tab 2 10' item"
+           setCardViewValue("Lenovo Tab A6","MRP Rs.6500","Lenovo Yoga Tab D233","MRP Rs.15000","Samsung Tab 2 10'"
                    ,"MRP Rs.18000","Samsung Galaxy Tab 3","MRP Rs.24000");
 
        }
