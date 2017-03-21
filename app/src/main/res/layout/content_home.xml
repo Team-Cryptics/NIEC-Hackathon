@@ -15,7 +15,10 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-
+        <fragment
+            android:id="@+id/frag_Main"
+            android:name="com.samarthgupta.niec_hackathon.BuyFragment"
+            android:layout_width="match_parent" android:layout_height="match_parent"/>
 
     </FrameLayout>
 
