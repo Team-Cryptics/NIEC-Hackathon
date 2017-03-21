@@ -49,14 +49,14 @@ public class HomeActivity extends AppCompatActivity
             @Override public boolean onNavigationItemSelected(@NonNull MenuItem item)
             {
                 switch (item.getItemId()) {
-                    case R.id.navigation_home:
+                    case R.id.navigation_buy:
                         break;
-                    case R.id.navigation_dashboard:
+                    case R.id.navigation_sell:
                         break;
-                    case R.id.navigation_notifications:
+                    case R.id.navigation_donate:
                         break;
                 }
-                return false;
+                return true;
             }
         });
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

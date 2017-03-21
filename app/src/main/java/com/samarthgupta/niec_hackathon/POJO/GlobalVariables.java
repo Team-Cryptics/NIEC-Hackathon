@@ -5,4 +5,7 @@ package com.samarthgupta.niec_hackathon.POJO;
  */
 
 public class GlobalVariables {
+
+    public static String productName;
+    public static String productMRP;
 }
