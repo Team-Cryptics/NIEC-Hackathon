@@ -13,35 +13,30 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
         <activity android:name=".RegisterActivity" />
-<<<<<<< HEAD
+
         <activity android:name=".SignInActivity"></activity>
-=======
         <activity android:name=".SignInActivity">
 
 
         </activity>
->>>>>>> 7b1926abd335e1abfae39a03cd26cde792d28a57
+
         <activity android:name=".SplashScreen" />
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
-<<<<<<< HEAD
+
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CostEval">
 
         </activity>
         <activity android:name=".SelectDevice">
-
-=======
             android:theme="@style/AppTheme.NoActionBar">
->>>>>>> 7b1926abd335e1abfae39a03cd26cde792d28a57
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CostEval"></activity>
     </application>
 
 </manifest>
