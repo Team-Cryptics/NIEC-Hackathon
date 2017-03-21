@@ -10,7 +10,11 @@ public class GlobalVariables {
 
     public static String productName;
     public static String productMRP;
+    public static String productCategory;
+
+
     public static String ngoName;
     public static String imageString;
     public static Bitmap m_Image;
+
 }
