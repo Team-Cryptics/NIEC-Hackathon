@@ -1,5 +1,6 @@
 package com.samarthgupta.niec_hackathon;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -14,7 +15,6 @@ public class SelectDevice extends AppCompatActivity implements View.OnClickListe
     //GET FROM INTENT
     String device_type="TV";
 
-    GlobalVariables globalVariables = new GlobalVariables();
     CardView cv1,cv2,cv3,cv4;
     ImageView iv1,iv2,iv3,iv4;
     TextView tv_dev1, tv_dev2, tv_dev3, tv_dev4,tv_pri1,tv_pri2,tv_pri3,tv_pri4;
@@ -96,27 +96,28 @@ public class SelectDevice extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
-        globalVariables.productCategory = device_type;
+        GlobalVariables.productCategory = device_type;
         switch (view.getId()) {
             case R.id.cv_1 :
-                globalVariables.productName = tv_dev1.getText().toString();
-                globalVariables.productMRP = tv_pri1.getText().toString();
+                GlobalVariables.productName = tv_dev1.getText().toString();
+                GlobalVariables.productMRP = tv_pri1.getText().toString();
                 break;
             case R.id.cv_2 :
-                globalVariables.productName = tv_dev1.getText().toString();
-                globalVariables.productMRP = tv_pri1.getText().toString();
+                GlobalVariables.productName = tv_dev2.getText().toString();
+                GlobalVariables.productMRP = tv_pri2.getText().toString();
+
                 break;
             case R.id.cv_3 :
-                globalVariables.productName = tv_dev1.getText().toString();
-                globalVariables.productMRP = tv_pri1.getText().toString();
+                GlobalVariables.productName = tv_dev3.getText().toString();
+                GlobalVariables.productMRP = tv_pri3.getText().toString();
                 break;
             case R.id.cv_4 :
-                globalVariables.productName = tv_dev1.getText().toString();
-                globalVariables.productMRP = tv_pri1.getText().toString();
+                GlobalVariables.productName = tv_dev4.getText().toString();
+                GlobalVariables.productMRP = tv_pri4.getText().toString();
                 break;
         }
 
-        Log.i("TAG",globalVariables.productName);
-
+        Log.i("TAG",GlobalVariables.productName);
+        startActivity(new Intent(SelectDevice.this,Camera_Activity.class));
     }
 }

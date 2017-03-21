@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.samarthgupta.niec_hackathon.ImageConverter;
@@ -34,6 +35,7 @@ public class Camera_Activity extends AppCompatActivity {
             GlobalVariables.m_Image = imageBitmap;
             GlobalVariables.imageString = ImageConverter.BitMapToString(imageBitmap);
 
+            Log.i("TAG",GlobalVariables.productName);
 
         }
     }
