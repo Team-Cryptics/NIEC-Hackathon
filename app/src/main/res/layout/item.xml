@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+    card_view:cardUseCompatPadding="true"
+    android:layout_margin="10dp"
+    card_view:cardElevation="10dp"
+    card_view:cardCornerRadius="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:padding="5dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/ll1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/tv_ProductName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:textAppearanceLarge"
+                    android:layout_alignParentLeft="true"
+                    android:text="Electronic Item Name"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="5dp"/>
+
+                <TextView
+                    android:id="@+id/tv_Price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_alignBottom="@+id/tv_product"
+                    android:text="Seller Name"
+                    android:textAppearance="?android:textAppearanceMedium"/>
+
+            </LinearLayout>
+
+            <com.sackcentury.shinebuttonlib.ShineButton
+                android:layout_alignParentRight="true"
+                android:src="@android:color/darker_gray"
+                android:id="@+id/po_image2"
+                app:btn_color="@android:color/darker_gray"
+                app:btn_fill_color="@android:color/holo_green_dark"
+                app:allow_random_color="false"
+                app:siShape="@raw/heart"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+
+        </RelativeLayout>
+
+
+
+        <ImageView
+            android:id="@+id/product_image"
+            android:layout_margin="10dp"
+            android:layout_width="330dp"
+            android:layout_height="200dp"
+            android:layout_below="@+id/ll1"
+            android:layout_centerHorizontal="true" />
+        <LinearLayout
+            android:id="@+id/ll_properties"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:padding="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_alignBottom="@+id/product_image">
+
+                <TextView
+                    android:id="@+id/product_property1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textAppearance="?android:textAppearanceLarge"
+                    android:text="Property 1"/>
+
+                <TextView
+                    android:id="@+id/product_property2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:text="Property 2"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:padding="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_alignBottom="@+id/product_image">
+
+                <TextView
+                    android:id="@+id/product_property3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textAppearance="?android:textAppearanceLarge"
+                    android:text="Property 3"/>
+
+                <TextView
+                    android:id="@+id/product_property4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:text="Property 4"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:padding="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_alignBottom="@+id/product_image">
+
+                <TextView
+                    android:id="@+id/product_property5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textAppearance="?android:textAppearanceLarge"
+                    android:text="Property 5"/>
+
+                <TextView
+                    android:id="@+id/product_property6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:text="Property 6"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
