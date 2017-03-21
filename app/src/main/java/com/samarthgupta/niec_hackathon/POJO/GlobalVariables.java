@@ -8,4 +8,6 @@ public class GlobalVariables {
 
     public static String productName;
     public static String productMRP;
+    public static String productCategory;
+
 }

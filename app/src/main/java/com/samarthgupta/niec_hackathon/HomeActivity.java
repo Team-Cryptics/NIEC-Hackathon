@@ -73,11 +73,11 @@ public class HomeActivity extends AppCompatActivity
 
         mDemoSlider = (SliderLayout)findViewById(R.id.slider);
         HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("Hannibal",R.drawable.img4);
-        file_maps.put("Big Bang Theory",R.drawable.img2);
-        file_maps.put("House of Cards",R.drawable.img4);
-        file_maps.put("Game of Thrones", R.drawable.img3);
-        file_maps.put("The Last of Us", R.drawable.img5);
+        file_maps.put("Buy iPhone 7",R.drawable.iphone);
+        file_maps.put("Get 10% Off on Samsung Galaxy Tab",R.drawable.samsungtab);
+        file_maps.put("Buy Samsung smart TV",R.drawable.samsungtv);
+        file_maps.put("Buy MacBook Air", R.drawable.macair);
+        file_maps.put("Buy MacBook Pro", R.drawable.macpro);
         for(String name : file_maps.keySet()){
             TextSliderView textSliderView = new TextSliderView(this);
             // initialize a SliderLayout
