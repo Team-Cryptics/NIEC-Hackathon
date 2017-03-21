@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.samarthgupta.niec_hackathon">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -12,12 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".MainActivity" />
         <activity android:name=".RegisterActivity" />
-
-        <activity android:name=".SignInActivity"></activity>
-
+        <activity android:name=".SignInActivity" />
         <activity android:name=".SplashScreen" />
 
         <activity android:name=".CostEval">
@@ -28,6 +27,8 @@
 
 
         </activity>
+
+
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
@@ -39,6 +40,13 @@
             </intent-filter>
 
 
+        </activity>
+        <activity android:name=".Camera_Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
