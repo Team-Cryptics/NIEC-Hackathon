@@ -12,6 +12,7 @@ public class UserInformation {
     private String fname;
     private String lname;
     private String icode;
+    String category;
 
     public UserInformation() {
         //Empty constructor
@@ -25,8 +26,14 @@ public class UserInformation {
         this.lname = lname;
         this.mno = mno;
         this.icode = icode;
+    }
 
+    public String getCategory() {
+        return category;
+    }
 
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getEmail() {
