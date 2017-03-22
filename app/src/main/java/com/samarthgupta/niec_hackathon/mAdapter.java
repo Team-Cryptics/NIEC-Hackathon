@@ -37,7 +37,7 @@ public class mAdapter extends RecyclerView.Adapter<mAdapter.ViewHolder>
 
     @Override public void onBindViewHolder(ViewHolder holder, int position)
     {
-        holder.pic.setImageBitmap(pics.get(position)); //convert pic to bitmap here
+     //   holder.pic.setImageBitmap(pics.get(position)); //convert pic to bitmap here
     }
 
     @Override

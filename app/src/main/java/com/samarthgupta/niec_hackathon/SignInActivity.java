@@ -21,7 +21,7 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
+//import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -64,7 +64,7 @@ public class SignInActivity extends AppCompatActivity implements
     private GoogleApiClient mGoogleApiCLient;
 
 
-    LoginButton loginButton;
+    //LoginButton loginButton;
 
 
 
@@ -99,7 +99,7 @@ public class SignInActivity extends AppCompatActivity implements
 
                 if (user != null) {
                     Log.d(TAG, "onAuthStateChanged: AUTH" + user.getDisplayName());
-                    Toast.makeText(getApplicationContext(), "jchjsdh", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Signed in.", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(SignInActivity.this, HomeActivity.class));
                     finish();
 
@@ -155,7 +155,7 @@ public class SignInActivity extends AppCompatActivity implements
                                     }
                                 } else {
                                     //TO USE - LOGIN COMPLETE
-                                    Toast.makeText(getApplicationContext(), "jchjsdh", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "Signed In", Toast.LENGTH_SHORT).show();
                                      Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                                      startActivity(intent);
                                      finish();
@@ -189,9 +189,9 @@ public class SignInActivity extends AppCompatActivity implements
         findViewById(R.id.bt_google_signin).setOnClickListener(this);
        // findViewById(R.id.sign_out_btn).setOnClickListener(this);
 
-        loginButton = (LoginButton) findViewById(R.id.bt_facebook_signin);
-        loginButton.setReadPermissions("email");
-        loginButton.registerCallback(CallbackManager, new FacebookCallback<LoginResult>()
+        //loginButton = (LoginButton) findViewById(R.id.bt_facebook_signin);
+        //loginButton.setReadPermissions("email");
+       /* loginButton.registerCallback(CallbackManager, new FacebookCallback<LoginResult>()
         {
             @Override public void onSuccess(LoginResult loginResult)
             {
@@ -207,7 +207,7 @@ public class SignInActivity extends AppCompatActivity implements
             {
                 Toast.makeText(SignInActivity.this, "Err", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
 
     }
