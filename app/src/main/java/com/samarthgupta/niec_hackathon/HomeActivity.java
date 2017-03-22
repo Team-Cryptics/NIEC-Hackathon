@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -23,6 +24,13 @@ import com.daimajia.slider.library.SliderLayout.Transformer;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.samarthgupta.niec_hackathon.POJO.GlobalVariables;
+import com.samarthgupta.niec_hackathon.POJO.PlaceOrder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,16 +46,30 @@ public class HomeActivity extends AppCompatActivity
     RecyclerView.LayoutManager rvLayoutManager;
 
     ArrayList<ImageView> pics;
+    ArrayList<PlaceOrder> orders;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference ref;
+
+    int count = 0,k=0;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        ref=firebaseDatabase.getReference();
+
         rvItems = (RecyclerView) findViewById(R.id.rv_Items);
         rvLayoutManager = new LinearLayoutManager(this);
         rvItems.setLayoutManager(rvLayoutManager);
-        rvAdapter = new mAdapter(pics);
+
+        ////////////////////////////////////
+    //    rvAdapter = new mAdapter(pics);
+
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
         {
@@ -55,12 +77,15 @@ public class HomeActivity extends AppCompatActivity
             {
                 switch (item.getItemId()) {
                     case R.id.navigation_buy:
+
                         break;
                     case R.id.navigation_sell:
+                        GlobalVariables.path = 1;
                         startActivity(new Intent(HomeActivity.this,SelectDeviceType.class));
 
                         break;
                     case R.id.navigation_donate:
+                        GlobalVariables.path = 0;
                         startActivity(new Intent(HomeActivity.this,SelectDeviceType.class));
                         break;
                 }
@@ -214,5 +239,47 @@ public class HomeActivity extends AppCompatActivity
     {
         mDemoSlider.stopAutoCycle();
         super.onStop();
+    }
+
+
+
+    void getData(){
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot dsp : dataSnapshot.child("ADVERTISEMENTS").child(Integer.toString(count)).getChildren()){
+                    count++;
+                    PlaceOrder order = dsp.getValue(PlaceOrder.class);
+                    Log.i("TAG",order.getPhoto());
+                    orders.add(k,order);
+                    k++;
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

@@ -2,6 +2,7 @@ package com.samarthgupta.niec_hackathon;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -13,6 +14,27 @@ import java.util.ArrayList;
 
 public class mAdapter extends RecyclerView.Adapter<mAdapter.ViewHolder>
 {
+    @Override
+    public mAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return null;
+    }
+
+    @Override
+    public void onBindViewHolder(mAdapter.ViewHolder holder, int position) {
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return 0;
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        public ViewHolder(View itemView) {
+            super(itemView);
+        }
+    }
+    /*
     ArrayList<ImageView> pics;
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView pic;
@@ -37,6 +59,7 @@ public class mAdapter extends RecyclerView.Adapter<mAdapter.ViewHolder>
 
     @Override public void onBindViewHolder(ViewHolder holder, int position)
     {
+
         holder.pic.setImageBitmap(pics.get(position)); //convert pic to bitmap here
     }
 
@@ -44,4 +67,5 @@ public class mAdapter extends RecyclerView.Adapter<mAdapter.ViewHolder>
     public int getItemCount() {
         return pics.size();
     }
+    */
 }

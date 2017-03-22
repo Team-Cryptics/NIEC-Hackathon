@@ -16,6 +16,7 @@ public class GlobalVariables {
     public static String productReasonSale;
     public static String deviceType;
 
+    public static int path;
 
 
     public static String ngoName;

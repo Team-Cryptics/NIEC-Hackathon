@@ -191,6 +191,9 @@ public class SignInActivity extends AppCompatActivity implements
 
         loginButton = (LoginButton) findViewById(R.id.bt_facebook_signin);
         loginButton.setReadPermissions("email");
+
+        ///////////////////////////////////////////////
+        /*
         loginButton.registerCallback(CallbackManager, new FacebookCallback<LoginResult>()
         {
             @Override public void onSuccess(LoginResult loginResult)
@@ -207,7 +210,7 @@ public class SignInActivity extends AppCompatActivity implements
             {
                 Toast.makeText(SignInActivity.this, "Err", Toast.LENGTH_SHORT).show();
             }
-        });
+        }); */
 
 
     }
