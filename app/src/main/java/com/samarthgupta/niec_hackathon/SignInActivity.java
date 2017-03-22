@@ -49,7 +49,7 @@ public class SignInActivity extends AppCompatActivity implements
         View.OnClickListener {
 
     private EditText inputEmail, inputPassword;
-    private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth,auth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     private ProgressBar progressBar;
@@ -57,22 +57,20 @@ public class SignInActivity extends AppCompatActivity implements
     private Button btnLogin;
 
 
-
-
     private static final String TAG = "LoginActivity";
     private static int RC_SIGN_IN = 0;
     private GoogleApiClient mGoogleApiCLient;
 
-
     LoginButton loginButton;
 
+    CallbackManager callbackManager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
-/*
+
+
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
@@ -83,9 +81,10 @@ public class SignInActivity extends AppCompatActivity implements
             finish();
         }
 
+
         // set the view now
         setContentView(R.layout.activity_sign_in);
-*/
+
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
@@ -193,8 +192,8 @@ public class SignInActivity extends AppCompatActivity implements
         loginButton.setReadPermissions("email");
 
         ///////////////////////////////////////////////
-        /*
-        loginButton.registerCallback(CallbackManager, new FacebookCallback<LoginResult>()
+
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>()
         {
             @Override public void onSuccess(LoginResult loginResult)
             {
@@ -210,7 +209,7 @@ public class SignInActivity extends AppCompatActivity implements
             {
                 Toast.makeText(SignInActivity.this, "Err", Toast.LENGTH_SHORT).show();
             }
-        }); */
+        });
 
 
     }

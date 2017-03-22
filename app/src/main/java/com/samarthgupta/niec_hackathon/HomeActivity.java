@@ -59,6 +59,7 @@ public class HomeActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        getData();
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         ref=firebaseDatabase.getReference();
