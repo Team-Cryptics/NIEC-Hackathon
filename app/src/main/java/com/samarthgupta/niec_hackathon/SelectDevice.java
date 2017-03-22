@@ -13,7 +13,7 @@ import com.samarthgupta.niec_hackathon.POJO.GlobalVariables;
 public class SelectDevice extends AppCompatActivity implements View.OnClickListener {
 
     //GET FROM INTENT
-    String device_type="Laptops";
+    String device_type="Tablets";
 
     GlobalVariables globalVariables = new GlobalVariables();
     CardView cv1,cv2,cv3,cv4;
@@ -30,7 +30,10 @@ public class SelectDevice extends AppCompatActivity implements View.OnClickListe
         cv3= (CardView) findViewById(R.id.cv_3); cv3.setOnClickListener(this);
         cv4= (CardView) findViewById(R.id.cv_4); cv4.setOnClickListener(this);
 
-        iv1= (ImageView) findViewById(R.id.iv_Product1); iv2= (ImageView) findViewById(R.id.iv_Product2); iv3= (ImageView) findViewById(R.id.iv_Product3); iv4= (ImageView) findViewById(R.id.iv_Product4);
+        iv1= (ImageView) findViewById(R.id.iv_Product1);
+        iv2= (ImageView) findViewById(R.id.iv_Product2);
+        iv3= (ImageView) findViewById(R.id.iv_Product3);
+        iv4= (ImageView) findViewById(R.id.iv_Product4);
 
         tv_dev1 = (TextView) findViewById(R.id.tv_Device1);
         tv_dev2 = (TextView) findViewById(R.id.tv_Device2);
@@ -43,6 +46,7 @@ public class SelectDevice extends AppCompatActivity implements View.OnClickListe
         tv_pri4 = (TextView) findViewById(R.id.tv_Price4);
 
        if(device_type.equals("Mobiles")){
+
 
            setCardViewValue("iPhone 5S 16 GB","MRP Rs.19500","iPhone 6S 32 GB","MRP Rs.56000",
                    "Samsung Galaxy S4","MRP Rs.20000","Samsung Galaxy S5","MRP Rs.42000");
