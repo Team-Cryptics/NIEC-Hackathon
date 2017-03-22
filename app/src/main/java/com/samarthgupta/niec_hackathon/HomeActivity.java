@@ -10,18 +10,12 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.samarthgupta.niec_hackathon.Fragments.BuyFragment;
-import com.samarthgupta.niec_hackathon.Fragments.CameraFragment;
-import com.samarthgupta.niec_hackathon.Fragments.DonateFragment;
+import android.widget.ImageView;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
@@ -30,6 +24,7 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class HomeActivity extends AppCompatActivity
@@ -38,12 +33,21 @@ public class HomeActivity extends AppCompatActivity
     SliderLayout mDemoSlider;
     BottomNavigationView bottomNavigationView;
     Fragment fragment;
+    RecyclerView rvItems;
+    RecyclerView.Adapter rvAdapter;
+    RecyclerView.LayoutManager rvLayoutManager;
+
+    ArrayList<ImageView> pics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        rvItems = (RecyclerView) findViewById(R.id.rv_Items);
+        rvLayoutManager = new LinearLayoutManager(this);
+        rvItems.setLayoutManager(rvLayoutManager);
+        rvAdapter = new mAdapter(pics);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
         {
@@ -51,7 +55,6 @@ public class HomeActivity extends AppCompatActivity
             {
                 switch (item.getItemId()) {
                     case R.id.navigation_buy:
-
                         break;
                     case R.id.navigation_sell:
                         startActivity(new Intent(HomeActivity.this,SelectDeviceType.class));

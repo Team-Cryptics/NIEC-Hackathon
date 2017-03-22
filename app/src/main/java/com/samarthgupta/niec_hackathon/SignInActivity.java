@@ -17,6 +17,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -59,6 +64,7 @@ public class SignInActivity extends AppCompatActivity implements
     private GoogleApiClient mGoogleApiCLient;
 
 
+    LoginButton loginButton;
 
 
 
@@ -182,6 +188,26 @@ public class SignInActivity extends AppCompatActivity implements
 
         findViewById(R.id.bt_google_signin).setOnClickListener(this);
        // findViewById(R.id.sign_out_btn).setOnClickListener(this);
+
+        loginButton = (LoginButton) findViewById(R.id.bt_facebook_signin);
+        loginButton.setReadPermissions("email");
+        loginButton.registerCallback(CallbackManager, new FacebookCallback<LoginResult>()
+        {
+            @Override public void onSuccess(LoginResult loginResult)
+            {
+                Toast.makeText(SignInActivity.this, "Succ", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override public void onCancel()
+            {
+                Toast.makeText(SignInActivity.this, "Cancel", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override public void onError(FacebookException error)
+            {
+                Toast.makeText(SignInActivity.this, "Err", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }
