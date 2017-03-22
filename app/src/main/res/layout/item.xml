@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
+
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-
     card_view:cardUseCompatPadding="true"
     android:layout_margin="10dp"
     card_view:cardElevation="10dp"
     card_view:cardCornerRadius="10dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
-
-    <LinearLayout
-        android:padding="5dp"
-        android:orientation="vertical"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="5dp">
+
         <RelativeLayout
-            android:padding="5dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
             <LinearLayout
                 android:id="@+id/ll1"
                 android:layout_width="wrap_content"
@@ -32,131 +38,102 @@
                     android:id="@+id/tv_ProductName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:textAppearanceLarge"
                     android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
                     android:text="Electronic Item Name"
-                    android:textSize="20dp"
-                    android:layout_marginLeft="5dp"/>
+                    android:textAppearance="?android:textAppearanceLarge"
+                    android:textSize="20dp" />
 
                 <TextView
-                    android:id="@+id/tv_Price"
+                    android:id="@+id/tv_Price_MRP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
                     android:layout_alignBottom="@+id/tv_product"
-                    android:text="Seller Name"
-                    android:textAppearance="?android:textAppearanceMedium"/>
+                    android:layout_margin="5dp"
+                    android:text="Price MRP"
+                    android:textAppearance="?android:textAppearanceMedium" />
+
+                <TextView
+                    android:id="@+id/tv_Price_Offer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/tv_product"
+                    android:layout_margin="5dp"
+                    android:text="Price Offering"
+                    android:textAppearance="?android:textAppearanceMedium" />
+
 
             </LinearLayout>
 
             <com.sackcentury.shinebuttonlib.ShineButton
+                android:id="@+id/po_image2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_alignParentRight="true"
                 android:src="@android:color/darker_gray"
-                android:id="@+id/po_image2"
+                app:allow_random_color="false"
                 app:btn_color="@android:color/darker_gray"
                 app:btn_fill_color="@android:color/holo_green_dark"
-                app:allow_random_color="false"
-                app:siShape="@raw/heart"
-                android:layout_width="50dp"
-                android:layout_height="50dp"/>
+                app:siShape="@raw/heart" />
 
         </RelativeLayout>
 
 
-
         <ImageView
             android:id="@+id/product_image"
-            android:layout_margin="10dp"
             android:layout_width="330dp"
             android:layout_height="200dp"
             android:layout_below="@+id/ll1"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp" />
+
         <LinearLayout
             android:id="@+id/ll_properties"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
             <LinearLayout
-                android:padding="2dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_alignBottom="@+id/product_image"
                 android:layout_marginLeft="5dp"
-                android:layout_alignBottom="@+id/product_image">
+                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                android:padding="2dp">
 
                 <TextView
                     android:id="@+id/product_property1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textAppearance="?android:textAppearanceLarge"
-                    android:text="Property 1"/>
+
+                    android:text="Property 1"
+                    android:textAppearance="?android:textAppearanceLarge" />
 
                 <TextView
                     android:id="@+id/product_property2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
 
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:text="Property 2"/>
+                    android:text="Property 2"
+                    android:textAppearance="?android:textAppearanceLarge" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:padding="2dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_alignBottom="@+id/product_image">
-
-                <TextView
-                    android:id="@+id/product_property3"
+                <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textAppearance="?android:textAppearanceLarge"
-                    android:text="Property 3"/>
-
-                <TextView
-                    android:id="@+id/product_property4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:text="Property 4"/>
+                    android:text="Proceed"
+                    android:textColor="@android:color/background_light"
+                    android:background="@android:color/background_dark"
+                    android:id="@+id/proceed_button"
+                    android:layout_gravity="center"/>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:padding="2dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_alignBottom="@+id/product_image">
 
-                <TextView
-                    android:id="@+id/product_property5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textAppearance="?android:textAppearanceLarge"
-                    android:text="Property 5"/>
-
-                <TextView
-                    android:id="@+id/product_property6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:text="Property 6"/>
-
-            </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
+    </ScrollView>
 
 </android.support.v7.widget.CardView>
