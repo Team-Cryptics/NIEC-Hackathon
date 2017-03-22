@@ -14,6 +14,7 @@ public class GlobalVariables {
     public static String productOfferPrice;
     public static String productDescription;
     public static String productReasonSale;
+    public static String deviceType;
 
 
 

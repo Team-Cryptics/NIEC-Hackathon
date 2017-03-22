@@ -54,10 +54,11 @@ public class HomeActivity extends AppCompatActivity
 
                         break;
                     case R.id.navigation_sell:
-                        startActivity(new Intent(HomeActivity.this,SelectDevice.class));
+                        startActivity(new Intent(HomeActivity.this,SelectDeviceType.class));
 
                         break;
                     case R.id.navigation_donate:
+                        startActivity(new Intent(HomeActivity.this,SelectDeviceType.class));
                         break;
                 }
                 return true;
