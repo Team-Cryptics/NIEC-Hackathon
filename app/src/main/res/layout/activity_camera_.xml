@@ -12,15 +12,4 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        style="@android:style/Widget.ImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="3dp"
-        app:srcCompat="@drawable/retake4"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp" />
-
 </RelativeLayout>

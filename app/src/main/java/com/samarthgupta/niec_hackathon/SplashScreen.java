@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 public class SplashScreen extends AppCompatActivity
 {
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -16,11 +17,12 @@ public class SplashScreen extends AppCompatActivity
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashScreen.this, SignInActivity.class);
-                startActivity(i);
+
+                //Change activity
+                Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+                startActivity(intent);
                 finish();
             }
-        }, 3000);
-
+        }, 3000); //5 seconds
     }
 }

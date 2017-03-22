@@ -11,6 +11,10 @@ public class GlobalVariables {
     public static String productName;
     public static String productMRP;
     public static String productCategory;
+    public static String productOfferPrice;
+    public static String productDescription;
+    public static String productReasonSale;
+
 
 
     public static String ngoName;

@@ -7,26 +7,31 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.database.FirebaseDatabase;
+import com.samarthgupta.niec_hackathon.POJO.GlobalVariables;
 
 public class CostEval extends AppCompatActivity {
 
     Spinner spin1,spin2,spin3;
     float warr; int age; int cond; float perc;
     Button btProceed;
+    EditText productDes,reasonSale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cost_eval);
-
         spin1 = (Spinner)findViewById(R.id.spinner);
         spin2 = (Spinner)findViewById(R.id.spinner1);
         spin3 = (Spinner)findViewById(R.id.spinner2);
         btProceed = (Button)findViewById(R.id.bt_proceed);
+        productDes= (EditText) findViewById(R.id.product_description);
+        reasonSale = (EditText) findViewById(R.id.product_reason_sale);
+
 
         spin1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -73,10 +78,6 @@ public class CostEval extends AppCompatActivity {
                     case 3 : cond =20 ; break;
                 }
 
-                Toast.makeText(CostEval.this,"lol"+i , Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(CostEval.this , HomeActivity.class);
-                startActivity(intent);
-
             }
 
             @Override
@@ -92,6 +93,14 @@ public class CostEval extends AppCompatActivity {
 
                 perc = cond + warr + (6*age);
                 Log.i("TAG",Float.toString(perc));
+                startActivity(new Intent(CostEval.this,FinalActivity.class));
+                float productMRP = Integer.parseInt(GlobalVariables.productMRP);
+                float productSP = (productMRP - ((perc/100)*productMRP));
+                GlobalVariables.productOfferPrice = String.valueOf(productSP);
+                GlobalVariables.productDescription= productDes.getText().toString();
+                GlobalVariables.productReasonSale= reasonSale.getText().toString();
+                startActivity(new Intent(CostEval.this,FinalActivity.class));
+
 
             }
         });
