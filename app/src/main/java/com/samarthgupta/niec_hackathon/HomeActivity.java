@@ -59,10 +59,34 @@ public class HomeActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        getData();
+
+        Log.i("TAG","in");
+
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         ref=firebaseDatabase.getReference();
+
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot dsp : dataSnapshot.child("ADVERTISEMENTS").child(Integer.toString(count)).getChildren()){
+                    count++;
+                    PlaceOrder order = dsp.getValue(PlaceOrder.class);
+                    Log.i("TAG",order.getPhoto());
+                    orders.add(k,order);
+                    k++;
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         rvItems = (RecyclerView) findViewById(R.id.rv_Items);
         rvLayoutManager = new LinearLayoutManager(this);
@@ -189,23 +213,21 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera)
+        if (id == R.id.home)
         {
+            startActivity(new Intent(HomeActivity.this,HomeActivity.class));
             // Handle the camera action
-        } else if (id == R.id.nav_gallery)
+        } else if (id == R.id.sell)
         {
+            startActivity(new Intent(HomeActivity.this,SelectDeviceType.class));
 
-        } else if (id == R.id.nav_slideshow)
+        } else if (id == R.id.signout)
         {
+            //SIGNOUT
 
-        } else if (id == R.id.nav_manage)
+        } else if (id == R.id.abtus)
         {
-
-        } else if (id == R.id.nav_share)
-        {
-
-        } else if (id == R.id.nav_send)
-        {
+            startActivity(new Intent(HomeActivity.this,ContactUs.class));
 
         }
 
@@ -244,28 +266,6 @@ public class HomeActivity extends AppCompatActivity
 
 
 
-    void getData(){
-
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                for(DataSnapshot dsp : dataSnapshot.child("ADVERTISEMENTS").child(Integer.toString(count)).getChildren()){
-                    count++;
-                    PlaceOrder order = dsp.getValue(PlaceOrder.class);
-                    Log.i("TAG",order.getPhoto());
-                    orders.add(k,order);
-                    k++;
-                }
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
 
 
@@ -282,5 +282,8 @@ public class HomeActivity extends AppCompatActivity
 
 
 
-    }
+
+
+
+
 }
