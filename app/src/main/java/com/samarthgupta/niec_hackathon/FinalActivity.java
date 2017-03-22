@@ -26,6 +26,7 @@ public class FinalActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
     DatabaseReference ref;
     FirebaseUser user;
+    FirebaseAuth auth;
 
     TextView tv1,tv2,tv3,prop1,prop2;
     ImageView product_Image;
@@ -45,13 +46,16 @@ public class FinalActivity extends AppCompatActivity {
         proceed_btn= (Button) findViewById(R.id.proceed_button);
 
         ref = firebaseDatabase.getReference();
+        auth = FirebaseAuth.getInstance();
+       // user=auth.getCurrentUser();
+
 
         tv1.setText(GlobalVariables.productName);
-        tv2.setText(GlobalVariables.productMRP);
-        tv3.setText(GlobalVariables.productOfferPrice);
+        tv2.setText("MRP Rs."+GlobalVariables.productMRP);
+        tv3.setText("Price Rs."+GlobalVariables.productOfferPrice);
         product_Image.setImageBitmap(GlobalVariables.m_Image);
-        prop1.setText(GlobalVariables.productDescription);
-        prop2.setText(GlobalVariables.productReasonSale);
+        prop1.setText("Description"+GlobalVariables.productDescription);
+        prop2.setText("Reason for sale"+GlobalVariables.productReasonSale);
 
         proceed_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +66,8 @@ public class FinalActivity extends AppCompatActivity {
                 userAd.setCondition(GlobalVariables.productDescription);
                 userAd.setDescrip(GlobalVariables.productDescription);
                 userAd.setCostsp(Float.parseFloat(GlobalVariables.productOfferPrice));
-                ref.child("ADVERTISEMENTS").child(user.getUid()).setValue(userAd);
+               ref.child("ADVERTISEMENTS").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(userAd);
+              // ref.child("ADVERTISEMENTS").child("SAM").setValue(userAd);
                 startActivity(new Intent(FinalActivity.this,HomeActivity.class));
             }
         });
