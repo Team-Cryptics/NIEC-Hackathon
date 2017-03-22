@@ -23,7 +23,6 @@ public class UserAd {
         this.condition = condition;
         this.warranty = warranty;
         this.years = years;
-
     }
 
     public String getDescrip() {

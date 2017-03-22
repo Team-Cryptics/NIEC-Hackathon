@@ -14,6 +14,7 @@ import com.samarthgupta.niec_hackathon.POJO.GlobalVariables;
 public class Camera_Activity extends AppCompatActivity {
     static int IMAGE_CAPTURE_CODE = 7;
     ImageView iv_camera;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +36,9 @@ public class Camera_Activity extends AppCompatActivity {
             GlobalVariables.m_Image = imageBitmap;
             GlobalVariables.imageString = ImageConverter.BitMapToString(imageBitmap);
 
-            Log.i("TAG",GlobalVariables.productName);
+          //  Log.i("TAG",GlobalVariables.imageString);
+            //SEND INTENT
+            startActivity(new Intent(Camera_Activity.this,CostEval.class));
 
         }
     }
