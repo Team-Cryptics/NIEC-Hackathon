@@ -10,5 +10,7 @@ public class SelectDeviceType extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_device_type);
 
+        //START ACT SELECT DEVICE AND SEND TYPE OF DEVICE SELECTED. PS - COMPARE WITH STRINGS IN THE NEXT ACT
+
     }
 }
