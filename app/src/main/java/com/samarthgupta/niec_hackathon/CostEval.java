@@ -31,7 +31,6 @@ public class CostEval extends AppCompatActivity {
         spin1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-<<<<<<< HEAD
 
                 switch(i) {
                     case 0 : warr = 4; break;
@@ -73,11 +72,11 @@ public class CostEval extends AppCompatActivity {
                     case 2 : cond =16  ; break;
                     case 3 : cond =20 ; break;
                 }
-=======
+
                 Toast.makeText(CostEval.this,"lol"+i , Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(CostEval.this , HomeActivity.class);
                 startActivity(intent);
->>>>>>> 7b1926abd335e1abfae39a03cd26cde792d28a57
+
             }
 
             @Override
