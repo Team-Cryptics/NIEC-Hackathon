@@ -48,29 +48,29 @@ public class SelectDevice extends AppCompatActivity implements View.OnClickListe
        if(device_type.equals("Mobiles")){
 
 
-           setCardViewValue("iPhone 5S 16 GB","MRP Rs.19500","iPhone 6S 32 GB","MRP Rs.56000",
-                   "Samsung Galaxy S4","MRP Rs.20000","Samsung Galaxy S5","MRP Rs.42000",
+           setCardViewValue("iPhone 5S 16 GB","19500","iPhone 6S 32 GB","56000",
+                   "Samsung Galaxy S4","20000","Samsung Galaxy S5","42000",
                    R.drawable.appmob,R.drawable.appmobi,R.drawable.sammob,R.drawable.sammobi);
 
        }
         else if(device_type.equals("Laptops")){
 
-           setCardViewValue("Apple Macbook Air 13' ","MRP Rs.55000","Apple Macbook Pro 10' ","MRP Rs.80000",
-                   "Lenovo Ideapad","MRP Rs.25000","Lenovo Yoga Laptop 13'","MRP Rs.36000",
+           setCardViewValue("Apple Macbook Air 13' ","55000","Apple Macbook Pro 10' ","80000",
+                   "Lenovo Ideapad","25000","Lenovo Yoga Laptop 13'","36000",
                    R.drawable.macpro,R.drawable.macpro,R.drawable.lenidea,R.drawable.lenyoga);
 
        }
        else if(device_type.equals("TV")){
 
-           setCardViewValue("Micromax TV A1 55'","MRP Rs.20000","Micromax TV A2 36' ","MRP Rs.32000",
-                   "Samsung Smart TV 55'","MRP Rs.78000","Sony Bravia A550 35' ","MRP Rs.35000",
+           setCardViewValue("Micromax TV A1 55'","20000","Micromax TV A2 36' ","32000",
+                   "Samsung Smart TV 55'","78000","Sony Bravia A550 35' ","35000",
                    R.drawable.mictel,R.drawable.micteli,R.drawable.samsmart,R.drawable.sambra);
 
        }
         else if(device_type.equals("Tablets")){
 
-           setCardViewValue("Lenovo Tab A6","MRP Rs.6500","Lenovo Yoga Tab D233","MRP Rs.15000","Samsung Tab 2 10'"
-                   ,"MRP Rs.18000","Samsung Galaxy Tab 3","MRP Rs.24000",R.drawable.lentab,
+           setCardViewValue("Lenovo Tab A6","6500","Lenovo Yoga Tab D233","15000","Samsung Tab 2 10'"
+                   ,"18000","Samsung Galaxy Tab 3","24000",R.drawable.lentab,
                    R.drawable.lentabi,R.drawable.samtabi,R.drawable.samtabs);
 
        }
