@@ -1,5 +1,6 @@
 package com.samarthgupta.niec_hackathon;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -53,6 +54,7 @@ public class HomeActivity extends AppCompatActivity
 
                         break;
                     case R.id.navigation_sell:
+                        startActivity(new Intent(HomeActivity.this,SelectDevice.class));
 
                         break;
                     case R.id.navigation_donate:

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.samarthgupta.niec_hackathon.POJO.GlobalVariables;
@@ -24,7 +25,7 @@ public class FinalActivity extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
     DatabaseReference ref;
-    FirebaseAuth auth;
+    FirebaseUser user;
 
     TextView tv1,tv2,tv3,prop1,prop2;
     ImageView product_Image;
@@ -44,7 +45,6 @@ public class FinalActivity extends AppCompatActivity {
         proceed_btn= (Button) findViewById(R.id.proceed_button);
 
         ref = firebaseDatabase.getReference();
-        auth= FirebaseAuth.getInstance();
 
         tv1.setText(GlobalVariables.productName);
         tv2.setText(GlobalVariables.productMRP);
@@ -62,7 +62,7 @@ public class FinalActivity extends AppCompatActivity {
                 userAd.setCondition(GlobalVariables.productDescription);
                 userAd.setDescrip(GlobalVariables.productDescription);
                 userAd.setCostsp(Float.parseFloat(GlobalVariables.productOfferPrice));
-                ref.child("ADVERTISEMENTS").child(auth.getCurrentUser().toString()).setValue(userAd);
+                ref.child("ADVERTISEMENTS").child(user.getUid()).setValue(userAd);
                 startActivity(new Intent(FinalActivity.this,HomeActivity.class));
             }
         });
