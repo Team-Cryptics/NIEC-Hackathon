@@ -50,8 +50,10 @@ public class HomeActivity extends AppCompatActivity
             {
                 switch (item.getItemId()) {
                     case R.id.navigation_buy:
+
                         break;
                     case R.id.navigation_sell:
+
                         break;
                     case R.id.navigation_donate:
                         break;

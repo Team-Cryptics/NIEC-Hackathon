@@ -14,6 +14,8 @@ public class UserAd {
 
     public UserAd() {
 
+        descrip= null; photo=null; condition=null; warranty = null;
+        years=0; costsp = 0;
     }
 
 
@@ -63,5 +65,13 @@ public class UserAd {
 
     public void setYears(int years) {
         this.years = years;
+    }
+
+    public float getCostsp() {
+        return costsp;
+    }
+
+    public void setCostsp(float costsp) {
+        this.costsp = costsp;
     }
 }
