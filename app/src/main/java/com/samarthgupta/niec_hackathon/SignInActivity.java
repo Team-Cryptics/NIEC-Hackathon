@@ -17,6 +17,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+//import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -33,50 +35,67 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 
-public class SignInActivity extends AppCompatActivity  {
+
+
+public class SignInActivity extends AppCompatActivity implements
+        GoogleApiClient.OnConnectionFailedListener,
+        View.OnClickListener {
 
     private EditText inputEmail, inputPassword;
-    private FirebaseAuth auth;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+
     private ProgressBar progressBar;
     private TextView tv1;
     private Button btnLogin;
 
+
+
+
+    private static final String TAG = "LoginActivity";
+    private static int RC_SIGN_IN = 0;
+    private GoogleApiClient mGoogleApiCLient;
+
+
+    //LoginButton loginButton;
+
+
+
     @Override
-    protected void onCreate( Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
+        setContentView(R.layout.activity_sign_in);
+/*
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
         if (auth.getCurrentUser() != null) {
             // TO USE
-            //auth.signOut();
+           // auth.signOut();
             startActivity(new Intent(SignInActivity.this, HomeActivity.class));
-            Log.i("TAG","in");
             finish();
         }
 
         // set the view now
         setContentView(R.layout.activity_sign_in);
-
-
-
+*/
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
 
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseAuth.AuthStateListener mAuthListener = new FirebaseAuth.AuthStateListener() {
+
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 
                 if (user != null) {
                     Log.d(TAG, "onAuthStateChanged: AUTH" + user.getDisplayName());
-                    Toast.makeText(getApplicationContext(), "jchjsdh", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Signed in.", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(SignInActivity.this, HomeActivity.class));
                     finish();
 
@@ -91,10 +110,10 @@ public class SignInActivity extends AppCompatActivity  {
         inputPassword = (EditText) findViewById(R.id.et_password_signin);
         progressBar = (ProgressBar) findViewById(R.id.login_progress);
         btnLogin = (Button) findViewById(R.id.bt_signin);
-        tv1=(TextView)findViewById(R.id.tv_signUp);
+        tv1 = (TextView) findViewById(R.id.tv_signUp);
 
 
-        auth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,7 +133,7 @@ public class SignInActivity extends AppCompatActivity  {
                 progressBar.setVisibility(View.VISIBLE);
 
                 //authenticate user
-                auth.signInWithEmailAndPassword(email, password)
+                mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -132,7 +151,8 @@ public class SignInActivity extends AppCompatActivity  {
                                     }
                                 } else {
                                     //TO USE - LOGIN COMPLETE
-                                    Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+                                    Toast.makeText(getApplicationContext(), "Signed In", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                                     startActivity(intent);
                                     finish();
                                 }
@@ -145,12 +165,61 @@ public class SignInActivity extends AppCompatActivity  {
         tv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SignInActivity.this,RegisterActivity.class));
+                startActivity(new Intent(SignInActivity.this, RegisterActivity.class));
+                finish();
             }
         });
-    }
-}
 
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        mGoogleApiCLient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
+
+        findViewById(R.id.bt_google_signin).setOnClickListener(this);
+        // findViewById(R.id.sign_out_btn).setOnClickListener(this);
+
+        //loginButton = (LoginButton) findViewById(R.id.bt_facebook_signin);
+        //loginButton.setReadPermissions("email");
+       /* loginButton.registerCallback(CallbackManager, new FacebookCallback<LoginResult>()
+        {
+            @Override public void onSuccess(LoginResult loginResult)
+            {
+                Toast.makeText(SignInActivity.this, "Succ", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override public void onCancel()
+            {
+                Toast.makeText(SignInActivity.this, "Cancel", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override public void onError(FacebookException error)
+            {
+                Toast.makeText(SignInActivity.this, "Err", Toast.LENGTH_SHORT).show();
+            }
+        });*/
+
+
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(mAuthListener!=null){
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
 
 
     private void signin(){
@@ -175,8 +244,8 @@ public class SignInActivity extends AppCompatActivity  {
                 startActivity(new Intent(SignInActivity.this, HomeActivity.class));
                 finish();
 
-              //  Intent i = new Intent(this, HomeActivity.class);
-              //  startActivityForResult(i, 1);
+                //  Intent i = new Intent(this, HomeActivity.class);
+                //  startActivityForResult(i, 1);
 //                userToDB();
 
             }

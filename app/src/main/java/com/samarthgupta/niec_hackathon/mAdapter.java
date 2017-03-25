@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 public class mAdapter extends RecyclerView.Adapter<mAdapter.ViewHolder>
 {
+
+
     @Override
     public mAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return null;
@@ -35,39 +37,4 @@ public class mAdapter extends RecyclerView.Adapter<mAdapter.ViewHolder>
             super(itemView);
         }
     }
-    /*
-    ArrayList<ImageView> pics;
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView pic;
-        public ViewHolder(ImageView v) {
-            super(v);
-            pic = v;
-        }
-    }
-
-    public mAdapter(ArrayList<ImageView> pics) {
-        this.pics = pics;
-    }
-
-    @Override
-    public mAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
-        ImageView v = (ImageView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.iv_item, parent, false);
-        ViewHolder vh = new ViewHolder(v);
-        return vh;
-    }
-
-    @Override public void onBindViewHolder(ViewHolder holder, int position)
-    {
-
-        holder.pic.setImageBitmap(pics.get(position)); //convert pic to bitmap here
-     //   holder.pic.setImageBitmap(pics.get(position)); //convert pic to bitmap here
-    }
-
-    @Override
-    public int getItemCount() {
-        return pics.size();
-    }
-    */
 }

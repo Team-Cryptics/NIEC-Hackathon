@@ -8,88 +8,88 @@
     android:orientation="vertical"
     tools:context="com.samarthgupta.niec_hackathon.SignInActivity">
 
-<!-- Login progress -->
-<ProgressBar
-    android:id="@+id/login_progress"
-    style="?android:attr/progressBarStyleLarge"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
-    android:visibility="gone" />
-
-
-<LinearLayout
-    android:id="@+id/email_login_form"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <AutoCompleteTextView
-            android:id="@+id/et_email_signin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Email"
-            android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:singleLine="true" />
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/et_password_signin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:imeActionId="@+id/login"
-            android:imeActionLabel="action_sign_in_short"
-            android:imeOptions="actionUnspecified"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:singleLine="true" />
-
-    </android.support.design.widget.TextInputLayout>
-
-
-
-</LinearLayout>
-
-<RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
-    <Button
-        android:id="@+id/bt_signin"
-        style="?android:textAppearanceSmall"
+    <!-- Login progress -->
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
-        android:text="Sign in"
-        android:ems="10"
-        android:textStyle="normal|bold"
-        android:textColor="@android:color/background_light"
-        android:background="@android:color/background_dark"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginBottom="8dp"
+        android:visibility="gone" />
 
-    <TextView
+
+    <LinearLayout
+        android:id="@+id/email_login_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bt_signin"
-        android:layout_marginTop="30dp"
-        android:textAppearance="@style/AppTheme"
-        android:text="@string/sign_up_here"
-        android:textColor="@color/colorPrimaryDark"
-        android:id="@+id/tv_signUp"/>
+        android:orientation="vertical">
 
-</RelativeLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <AutoCompleteTextView
+                android:id="@+id/et_email_signin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/et_password_signin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:imeActionId="@+id/login"
+                android:imeActionLabel="action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/bt_signin"
+            style="?android:textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="23dp"
+            android:text="Sign in"
+            android:ems="10"
+            android:textStyle="normal|bold"
+            android:textColor="@android:color/background_light"
+            android:background="@android:color/background_dark"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bt_signin"
+            android:layout_marginTop="30dp"
+            android:textAppearance="@style/AppTheme"
+            android:text="@string/sign_up_here"
+            android:textColor="@color/colorPrimaryDark"
+            android:id="@+id/tv_signUp"/>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:orientation="vertical"
