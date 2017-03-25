@@ -61,8 +61,8 @@ public class FinalActivity extends AppCompatActivity {
         tv2.setText("MRP Rs."+GlobalVariables.productMRP);
         tv3.setText("Price Rs."+GlobalVariables.productOfferPrice);
         product_Image.setImageBitmap(GlobalVariables.m_Image);
-        prop1.setText("Description"+GlobalVariables.productDescription);
-        prop2.setText("Reason for sale"+GlobalVariables.productReasonSale);
+        prop1.setText("Description : "+GlobalVariables.productDescription);
+        prop2.setText("Reason for sale :"+GlobalVariables.productReasonSale);
 
 
        ref.child("COUNT").addValueEventListener(new ValueEventListener() {

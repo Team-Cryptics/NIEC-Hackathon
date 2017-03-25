@@ -28,6 +28,7 @@ public class SelectDeviceType extends AppCompatActivity {
             public void onClick(View view) {
                 GlobalVariables.deviceType = "Mobiles";
                 startActivity(new Intent(SelectDeviceType.this,SelectDevice.class));
+                finish();
             }
         });
 
@@ -36,6 +37,7 @@ public class SelectDeviceType extends AppCompatActivity {
             public void onClick(View view) {
                 GlobalVariables.deviceType = "TV";
                 startActivity(new Intent(SelectDeviceType.this,SelectDevice.class));
+                finish();
             }
         });
 
@@ -44,6 +46,7 @@ public class SelectDeviceType extends AppCompatActivity {
             public void onClick(View view) {
                 GlobalVariables.deviceType = "Tablets";
                 startActivity(new Intent(SelectDeviceType.this,SelectDevice.class));
+                finish();
             }
         });
 
@@ -52,6 +55,7 @@ public class SelectDeviceType extends AppCompatActivity {
             public void onClick(View view) {
                 GlobalVariables.deviceType = "Laptops";
                 startActivity(new Intent(SelectDeviceType.this,SelectDevice.class));
+                finish();
             }
         });
 
