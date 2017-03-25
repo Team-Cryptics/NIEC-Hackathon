@@ -20,7 +20,9 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".SignInActivity" />
 
-        <activity android:name=".SplashScreen">
+        <activity android:name=".SplashScreen"
+            android:theme="@style/Theme.Design.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,16 +32,18 @@
         </activity>
         <activity android:name=".CostEval"></activity>
         <activity android:name=".SelectDevice"></activity>
+
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar">
 
-
         </activity>
+
         <activity android:name=".Camera_Activity"></activity>
         <activity android:name=".SelectDeviceType"></activity>
         <activity android:name=".FinalActivity"></activity>
+        <activity android:name=".NGO_Activity"></activity>
 
         <activity android:name=".ContactUs"></activity>
     </application>

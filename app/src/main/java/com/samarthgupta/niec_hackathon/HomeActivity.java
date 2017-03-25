@@ -34,6 +34,7 @@ import com.samarthgupta.niec_hackathon.POJO.PlaceOrder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener
@@ -45,8 +46,8 @@ public class HomeActivity extends AppCompatActivity
     RecyclerView.Adapter rvAdapter;
     RecyclerView.LayoutManager rvLayoutManager;
 
-    ArrayList<ImageView> pics;
-    ArrayList<PlaceOrder> orders;
+    List<ImageView> pics;
+    List<PlaceOrder> orders;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference ref;
 
@@ -136,6 +137,7 @@ public class HomeActivity extends AppCompatActivity
         file_maps.put("Buy Samsung smart TV",R.drawable.samsungtv);
         file_maps.put("Buy MacBook Air", R.drawable.macair);
         file_maps.put("Buy MacBook Pro", R.drawable.macpro);
+
         for(String name : file_maps.keySet()){
             TextSliderView textSliderView = new TextSliderView(this);
             // initialize a SliderLayout
