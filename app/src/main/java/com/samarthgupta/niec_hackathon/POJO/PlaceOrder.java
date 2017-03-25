@@ -9,6 +9,7 @@ public class PlaceOrder {
 
         String userID;
         String uniqueID;
+        public String name;
         public String descrip;
         public String photo;
         public String condition;
@@ -16,10 +17,18 @@ public class PlaceOrder {
         public int years;
         float costsp;
 
-        public PlaceOrder() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public PlaceOrder() {
 
             descrip= null; photo=null; condition=null; warranty = null;
-            years=0; costsp = 0; userID = null; uniqueID = null;
+            years=0; costsp = 0; userID = null; uniqueID = null; name = null;
         }
 
 

@@ -10,6 +10,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -43,18 +44,12 @@ public class HomeActivity extends AppCompatActivity
     BottomNavigationView bottomNavigationView;
     Fragment fragment;
 
-    List<PlaceOrder> orders;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference ref;
 
     int count = 0,k=0;
+    List<PlaceOrder> orders;
 
-
-    RecyclerView rvItems;
-    RecyclerView.Adapter rvAdapter;
-    RecyclerView.LayoutManager rvLayoutManager;
-
-    ArrayList<ImageView> pics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -81,7 +76,17 @@ public class HomeActivity extends AppCompatActivity
                     k++;
                 }
 
+           /*     RecyclerView recyclerView;
+                RecyclerView.Adapter adapter;
+                RecyclerView.LayoutManager LayoutManager;
+                //SET DATA IN RECYCLER VIEW
+                recyclerView = (RecyclerView) findViewById(R.id.recycler_items);
+                LayoutManager = new GridLayoutManager(getApplicationContext(),2);
+                recyclerView.setLayoutManager(LayoutManager);
+                recyclerView.setHasFixedSize(true);
 
+                adapter = new mAdapter(orders);
+                recyclerView.setAdapter(adapter); */
             }
 
             @Override
@@ -90,17 +95,9 @@ public class HomeActivity extends AppCompatActivity
             }
         });
 
-        rvItems = (RecyclerView) findViewById(R.id.rv_Items);
-        rvLayoutManager = new LinearLayoutManager(this);
-        rvItems.setLayoutManager(rvLayoutManager);
 
-        ////////////////////////////////////
-    //    rvAdapter = new mAdapter(pics);
 
-        rvItems = (RecyclerView) findViewById(R.id.rv_Items);
-        rvLayoutManager = new LinearLayoutManager(this);
-        rvItems.setLayoutManager(rvLayoutManager);
-     //   rvAdapter = new mAdapter(pics);
+
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
         {
@@ -111,15 +108,19 @@ public class HomeActivity extends AppCompatActivity
 
                         break;
                     case R.id.navigation_sell:
-                        startActivity(new Intent(HomeActivity.this,SelectDevice.class));
+                        GlobalVariables.path=1;
+                        startActivity(new Intent(HomeActivity.this,SelectDeviceType.class));
 
                         break;
                     case R.id.navigation_donate:
+                        GlobalVariables.path=0;
+                        startActivity(new Intent(HomeActivity.this,SelectDeviceType.class));
                         break;
                 }
                 return true;
             }
         });
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -141,6 +142,7 @@ public class HomeActivity extends AppCompatActivity
         file_maps.put("Buy MacBook Pro", R.drawable.macpro);
         for(String name : file_maps.keySet()){
             TextSliderView textSliderView = new TextSliderView(this);
+
             // initialize a SliderLayout
             textSliderView
                     .description(name)
@@ -160,6 +162,7 @@ public class HomeActivity extends AppCompatActivity
         mDemoSlider.setCustomAnimation(new DescriptionAnimation());
         mDemoSlider.setDuration(4000);
         mDemoSlider.addOnPageChangeListener(this);
+
         //ListView l = (ListView)findViewById(R.id.transformers);
         //l.setAdapter(new TransformerAdapter(this));
 //        l.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -219,7 +222,7 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.home)
         {
             startActivity(new Intent(HomeActivity.this,HomeActivity.class));
-            // Handle the camera action
+
         } else if (id == R.id.sell)
         {
             startActivity(new Intent(HomeActivity.this,SelectDeviceType.class));

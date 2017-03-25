@@ -12,10 +12,8 @@ import com.samarthgupta.niec_hackathon.POJO.GlobalVariables;
 
 public class SelectDevice extends AppCompatActivity implements View.OnClickListener {
 
-    //GET FROM INTENT
-    String device_type=GlobalVariables.deviceType;
 
-
+    String device_type;
     CardView cv1,cv2,cv3,cv4;
     ImageView iv1,iv2,iv3,iv4;
     TextView tv_dev1, tv_dev2, tv_dev3, tv_dev4,tv_pri1,tv_pri2,tv_pri3,tv_pri4;
@@ -24,6 +22,7 @@ public class SelectDevice extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_device);
+        device_type=GlobalVariables.deviceType;
 
         cv1= (CardView) findViewById(R.id.cv_1); cv1.setOnClickListener(this);
         cv2= (CardView) findViewById(R.id.cv_2); cv2.setOnClickListener(this);

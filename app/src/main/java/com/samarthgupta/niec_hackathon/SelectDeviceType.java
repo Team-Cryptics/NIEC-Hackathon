@@ -17,7 +17,6 @@ public class SelectDeviceType extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_device_type);
 
-        //START ACT SELECT DEVICE AND SEND TYPE OF DEVICE SELECTED. PS - COMPARE WITH STRINGS IN THE NEXT ACT
 
         tv1= (TextView) findViewById(R.id.mob);
         tv2= (TextView) findViewById(R.id.tv);

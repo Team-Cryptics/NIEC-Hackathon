@@ -85,6 +85,7 @@ public class FinalActivity extends AppCompatActivity {
 
                 long time = System.currentTimeMillis();
                 PlaceOrder userAd = new PlaceOrder();
+                userAd.setName(GlobalVariables.productName);
                 userAd.setPhoto(GlobalVariables.imageString);
                 userAd.setCondition(GlobalVariables.productDescription);
                 userAd.setDescrip(GlobalVariables.productDescription);
@@ -93,7 +94,7 @@ public class FinalActivity extends AppCompatActivity {
                 userAd.setUniqueID(String.valueOf(time));
 
                 count++;
-               ref.child("ADVERTISEMENTS").child(Integer.toString(count)).setValue(userAd);
+                ref.child("ADVERTISEMENTS").child(Integer.toString(count)).setValue(userAd);
                 ref.child("COUNT").setValue(count);
               // ref.child("ADVERTISEMENTS").child().setValue(userAd);
                 startActivity(new Intent(FinalActivity.this,HomeActivity.class));
