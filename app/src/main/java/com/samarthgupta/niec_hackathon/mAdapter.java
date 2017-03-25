@@ -2,6 +2,7 @@ package com.samarthgupta.niec_hackathon;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -61,6 +62,7 @@ public class mAdapter extends RecyclerView.Adapter<mAdapter.ViewHolder>
     {
 
         holder.pic.setImageBitmap(pics.get(position)); //convert pic to bitmap here
+     //   holder.pic.setImageBitmap(pics.get(position)); //convert pic to bitmap here
     }
 
     @Override

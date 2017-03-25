@@ -42,11 +42,7 @@ public class HomeActivity extends AppCompatActivity
     SliderLayout mDemoSlider;
     BottomNavigationView bottomNavigationView;
     Fragment fragment;
-    RecyclerView rvItems;
-    RecyclerView.Adapter rvAdapter;
-    RecyclerView.LayoutManager rvLayoutManager;
 
-    List<ImageView> pics;
     List<PlaceOrder> orders;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference ref;
@@ -54,6 +50,11 @@ public class HomeActivity extends AppCompatActivity
     int count = 0,k=0;
 
 
+    RecyclerView rvItems;
+    RecyclerView.Adapter rvAdapter;
+    RecyclerView.LayoutManager rvLayoutManager;
+
+    ArrayList<ImageView> pics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -96,6 +97,10 @@ public class HomeActivity extends AppCompatActivity
         ////////////////////////////////////
     //    rvAdapter = new mAdapter(pics);
 
+        rvItems = (RecyclerView) findViewById(R.id.rv_Items);
+        rvLayoutManager = new LinearLayoutManager(this);
+        rvItems.setLayoutManager(rvLayoutManager);
+     //   rvAdapter = new mAdapter(pics);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
         {
@@ -106,13 +111,10 @@ public class HomeActivity extends AppCompatActivity
 
                         break;
                     case R.id.navigation_sell:
-                        GlobalVariables.path = 1;
-                        startActivity(new Intent(HomeActivity.this,SelectDeviceType.class));
+                        startActivity(new Intent(HomeActivity.this,SelectDevice.class));
 
                         break;
                     case R.id.navigation_donate:
-                        GlobalVariables.path = 0;
-                        startActivity(new Intent(HomeActivity.this,SelectDeviceType.class));
                         break;
                 }
                 return true;
@@ -137,7 +139,6 @@ public class HomeActivity extends AppCompatActivity
         file_maps.put("Buy Samsung smart TV",R.drawable.samsungtv);
         file_maps.put("Buy MacBook Air", R.drawable.macair);
         file_maps.put("Buy MacBook Pro", R.drawable.macpro);
-
         for(String name : file_maps.keySet()){
             TextSliderView textSliderView = new TextSliderView(this);
             // initialize a SliderLayout
@@ -265,27 +266,4 @@ public class HomeActivity extends AppCompatActivity
         mDemoSlider.stopAutoCycle();
         super.onStop();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
