@@ -1,6 +1,7 @@
 package com.samarthgupta.niec_hackathon;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -43,12 +44,16 @@ public class HomeActivity extends AppCompatActivity
     SliderLayout mDemoSlider;
     BottomNavigationView bottomNavigationView;
     Fragment fragment;
+    List<PlaceOrder> orders= new ArrayList<>();
+
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference ref;
 
-    int count = 0,k=0;
-    List<PlaceOrder> orders;
+    int count = 0;
+    RecyclerView recyclerView;
+    RecyclerView.Adapter adapter;
+    RecyclerView.LayoutManager LayoutManager;
 
 
     @Override
@@ -59,43 +64,7 @@ public class HomeActivity extends AppCompatActivity
 
         Log.i("TAG","in");
 
-
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        ref=firebaseDatabase.getReference();
-
-
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                for(DataSnapshot dsp : dataSnapshot.child("ADVERTISEMENTS").child(Integer.toString(count)).getChildren()){
-                    count++;
-                    PlaceOrder order = dsp.getValue(PlaceOrder.class);
-                    Log.i("TAG",order.getPhoto());
-                    orders.add(k,order);
-                    k++;
-                }
-
-           /*     RecyclerView recyclerView;
-                RecyclerView.Adapter adapter;
-                RecyclerView.LayoutManager LayoutManager;
-                //SET DATA IN RECYCLER VIEW
-                recyclerView = (RecyclerView) findViewById(R.id.recycler_items);
-                LayoutManager = new GridLayoutManager(getApplicationContext(),2);
-                recyclerView.setLayoutManager(LayoutManager);
-                recyclerView.setHasFixedSize(true);
-
-                adapter = new mAdapter(orders);
-                recyclerView.setAdapter(adapter); */
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
+        new LoadData().execute();
 
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
@@ -110,11 +79,13 @@ public class HomeActivity extends AppCompatActivity
                     case R.id.navigation_sell:
                         GlobalVariables.path=1;
                         startActivity(new Intent(HomeActivity.this,SelectDeviceType.class));
+                        finish();
 
                         break;
                     case R.id.navigation_donate:
                         GlobalVariables.path=0;
                         startActivity(new Intent(HomeActivity.this,SelectDeviceType.class));
+                        finish();
                         break;
                 }
                 return true;
@@ -268,5 +239,55 @@ public class HomeActivity extends AppCompatActivity
     {
         mDemoSlider.stopAutoCycle();
         super.onStop();
+    }
+
+    class LoadData extends AsyncTask<Void,Void,Void>{
+
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            firebaseDatabase = FirebaseDatabase.getInstance();
+            ref = firebaseDatabase.getReference();
+            Log.i("TAG","IN ASYNC");
+
+            ref.child("ADVERTISEMENTS").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+                        Log.i("TAG","IN ASYNC");
+
+                        PlaceOrder order = dsp.getValue(PlaceOrder.class);
+                        Log.i("TAG", order.getPhoto());
+                        orders.add(count, order);
+                        count++;
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Log.i("TAG","onPostExecute");
+            adapter = new mAdapter(orders);
+            recyclerView = (RecyclerView) findViewById(R.id.recycler_items);
+            LayoutManager = new GridLayoutManager(getApplicationContext(),2);
+            recyclerView.setLayoutManager(LayoutManager);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setAdapter(adapter);
+        }
     }
 }

@@ -13,7 +13,6 @@ public class PlaceOrder {
         public String descrip;
         public String photo;
         public String condition;
-        public String warranty;
         public int years;
         float costsp;
 
@@ -27,7 +26,7 @@ public class PlaceOrder {
 
     public PlaceOrder() {
 
-            descrip= null; photo=null; condition=null; warranty = null;
+            descrip= null; photo=null; condition=null;
             years=0; costsp = 0; userID = null; uniqueID = null; name = null;
         }
 
@@ -70,14 +69,6 @@ public class PlaceOrder {
 
     public void setCondition(String condition) {
         this.condition = condition;
-    }
-
-    public String getWarranty() {
-        return warranty;
-    }
-
-    public void setWarranty(String warranty) {
-        this.warranty = warranty;
     }
 
     public int getYears() {
