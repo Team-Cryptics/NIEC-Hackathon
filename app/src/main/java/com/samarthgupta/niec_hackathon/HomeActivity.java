@@ -1,6 +1,7 @@
 package com.samarthgupta.niec_hackathon;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -11,20 +12,19 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
-
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderLayout.Transformer;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,8 +32,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.samarthgupta.niec_hackathon.POJO.GlobalVariables;
 import com.samarthgupta.niec_hackathon.POJO.PlaceOrder;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -43,12 +43,18 @@ public class HomeActivity extends AppCompatActivity
     SliderLayout mDemoSlider;
     BottomNavigationView bottomNavigationView;
     Fragment fragment;
+    List<PlaceOrder> orders= new ArrayList<>();
+    FirebaseAuth mAuth;
+    FirebaseAuth.AuthStateListener mAuthStateListener;
+
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference ref;
 
-    int count = 0,k=0;
-    List<PlaceOrder> orders;
+    int count = 0;
+    RecyclerView recyclerView;
+    RecyclerView.Adapter adapter;
+    RecyclerView.LayoutManager LayoutManager;
 
 
     @Override
@@ -59,44 +65,16 @@ public class HomeActivity extends AppCompatActivity
 
         Log.i("TAG","in");
 
+        new LoadData().execute();
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        ref=firebaseDatabase.getReference();
-
-
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                for(DataSnapshot dsp : dataSnapshot.child("ADVERTISEMENTS").child(Integer.toString(count)).getChildren()){
-                    count++;
-                    PlaceOrder order = dsp.getValue(PlaceOrder.class);
-                    Log.i("TAG",order.getPhoto());
-                    orders.add(k,order);
-                    k++;
-                }
-
-           /*     RecyclerView recyclerView;
-                RecyclerView.Adapter adapter;
-                RecyclerView.LayoutManager LayoutManager;
-                //SET DATA IN RECYCLER VIEW
-                recyclerView = (RecyclerView) findViewById(R.id.recycler_items);
-                LayoutManager = new GridLayoutManager(getApplicationContext(),2);
-                recyclerView.setLayoutManager(LayoutManager);
-                recyclerView.setHasFixedSize(true);
-
-                adapter = new mAdapter(orders);
-                recyclerView.setAdapter(adapter); */
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-
+        PlaceOrder placeOrder = new PlaceOrder();
+        orders = Arrays.asList(placeOrder);
+        adapter = new mAdapter(orders);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_items);
+        LayoutManager = new GridLayoutManager(getApplicationContext(),2);
+        recyclerView.setLayoutManager(LayoutManager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(adapter);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
@@ -108,13 +86,16 @@ public class HomeActivity extends AppCompatActivity
 
                         break;
                     case R.id.navigation_sell:
-                        GlobalVariables.path=1;
-                        startActivity(new Intent(HomeActivity.this,SelectDeviceType.class));
+                        GlobalVariables.pathVariable=1;
 
-                        break;
-                    case R.id.navigation_donate:
-                        GlobalVariables.path=0;
                         startActivity(new Intent(HomeActivity.this,SelectDeviceType.class));
+                        finish();
+                        break;
+
+                    case R.id.navigation_donate:
+                        GlobalVariables.pathVariable=0;
+                        startActivity(new Intent(HomeActivity.this,SelectDeviceType.class));
+                        finish();
                         break;
                 }
                 return true;
@@ -172,6 +153,20 @@ public class HomeActivity extends AppCompatActivity
 //                Toast.makeText(HomeActivity.this, ((TextView) view).getText().toString(), Toast.LENGTH_SHORT).show();
 //            }
 //        });
+
+        //FOR SIGN OUT
+        mAuthStateListener= new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user == null) {
+                    // user auth state is changed - user is null
+                    // launch login activity
+                    startActivity(new Intent(HomeActivity.this, SignInActivity.class));
+                    finish();
+                }
+            }
+        };
     }
 
     @Override
@@ -221,15 +216,16 @@ public class HomeActivity extends AppCompatActivity
 
         if (id == R.id.home)
         {
-            startActivity(new Intent(HomeActivity.this,HomeActivity.class));
 
         } else if (id == R.id.sell)
         {
+            GlobalVariables.pathVariable=1;
             startActivity(new Intent(HomeActivity.this,SelectDeviceType.class));
 
         } else if (id == R.id.signout)
         {
-            //SIGNOUT
+            mAuth.signOut();
+            mAuth.addAuthStateListener(mAuthStateListener);
 
         } else if (id == R.id.abtus)
         {
@@ -268,5 +264,51 @@ public class HomeActivity extends AppCompatActivity
     {
         mDemoSlider.stopAutoCycle();
         super.onStop();
+    }
+
+    class LoadData extends AsyncTask<Void,Void,List<PlaceOrder>>{
+
+        final List<PlaceOrder> orderAsync = new ArrayList<>();
+        @Override
+        protected List<PlaceOrder> doInBackground(Void... voids) {
+            firebaseDatabase = FirebaseDatabase.getInstance();
+            ref = firebaseDatabase.getReference();
+            Log.i("TAG","IN ASYNC");
+            ref.child("ADVERTISEMENTS").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+                        Log.i("TAG","IN ASYNC");
+
+                        PlaceOrder order = dsp.getValue(PlaceOrder.class);
+                        Log.i("TAG", order.getPhoto());
+                        orderAsync.add(count, order);
+                        count++;
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+            return orderAsync;
+        }
+
+        @Override
+        protected void onPostExecute(List<PlaceOrder> placeOrders) {
+            super.onPostExecute(placeOrders);
+            Log.i("TAG","onPostExecute");
+            adapter = new mAdapter(placeOrders);
+            recyclerView = (RecyclerView) findViewById(R.id.recycler_items);
+            LayoutManager = new GridLayoutManager(getApplicationContext(),2);
+            recyclerView.setLayoutManager(LayoutManager);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setAdapter(adapter);
+        }
+
+
     }
 }

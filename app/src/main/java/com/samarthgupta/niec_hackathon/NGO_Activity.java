@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.support.v7.widget.CardView;
 
+import com.samarthgupta.niec_hackathon.POJO.GlobalVariables;
 import com.samarthgupta.niec_hackathon.R;
 
 public class NGO_Activity extends AppCompatActivity implements View.OnClickListener {
@@ -39,6 +40,10 @@ public class NGO_Activity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+
+        GlobalVariables.productOfferPrice = "0";
+        GlobalVariables.productDescription= "Donation";
+        GlobalVariables.productReasonSale= " ";
 
         Intent intent = new Intent(getApplicationContext(), FinalActivity.class);
         startActivity(intent);

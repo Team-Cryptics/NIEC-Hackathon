@@ -1,6 +1,7 @@
 package com.samarthgupta.niec_hackathon;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 
 import android.view.View;
@@ -29,11 +30,13 @@ public class mAdapter extends RecyclerView.Adapter<mAdapter.ViewHolder>
     public mAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_layout,parent,false);
         mAdapter.ViewHolder holder = new ViewHolder(view);
+        Log.i("TAG","onCreateView");
         return holder;
     }
 
     @Override
     public void onBindViewHolder(mAdapter.ViewHolder holder, int position) {
+        Log.i("TAG","onBindView");
         String imageString = itemList.get(position).getPhoto();
         holder.iv_productImage.setImageBitmap(ImageConverter.StringToBitMap(imageString));
         holder.tv_product_name.setText(itemList.get(position).getName());
@@ -56,6 +59,7 @@ public class mAdapter extends RecyclerView.Adapter<mAdapter.ViewHolder>
             iv_productImage = (ImageView)itemView.findViewById(R.id.iv_product_picture);
             tv_product_name = (TextView) itemView.findViewById(R.id.tv_product_title);
             tv_product_price= (TextView) itemView.findViewById(R.id.tv_product_price);
+            Log.i("TAG","ViewHolder");
         }
     }
 }

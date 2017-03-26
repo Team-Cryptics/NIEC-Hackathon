@@ -119,5 +119,6 @@ public class SelectDevice extends AppCompatActivity implements View.OnClickListe
 
         Log.i("TAG",GlobalVariables.productName);
         startActivity(new Intent(SelectDevice.this,Camera_Activity.class));
+        finish();
     }
 }

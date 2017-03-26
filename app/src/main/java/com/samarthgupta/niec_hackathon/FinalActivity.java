@@ -37,7 +37,7 @@ public class FinalActivity extends AppCompatActivity {
     TextView tv1,tv2,tv3,prop1,prop2;
     ImageView product_Image;
     Button proceed_btn;
-    Integer count=0;
+    Integer count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -61,8 +61,8 @@ public class FinalActivity extends AppCompatActivity {
         tv2.setText("MRP Rs."+GlobalVariables.productMRP);
         tv3.setText("Price Rs."+GlobalVariables.productOfferPrice);
         product_Image.setImageBitmap(GlobalVariables.m_Image);
-        prop1.setText("Description"+GlobalVariables.productDescription);
-        prop2.setText("Reason for sale"+GlobalVariables.productReasonSale);
+        prop1.setText("Description : "+GlobalVariables.productDescription);
+        prop2.setText("Reason for sale :"+GlobalVariables.productReasonSale);
 
 
        ref.child("COUNT").addValueEventListener(new ValueEventListener() {
@@ -93,11 +93,14 @@ public class FinalActivity extends AppCompatActivity {
                 userAd.setUserID(FirebaseAuth.getInstance().getCurrentUser().getUid());
                 userAd.setUniqueID(String.valueOf(time));
 
-                count++;
+
                 ref.child("ADVERTISEMENTS").child(Integer.toString(count)).setValue(userAd);
+                count++;
                 ref.child("COUNT").setValue(count);
-              // ref.child("ADVERTISEMENTS").child().setValue(userAd);
+
+                // ref.child("ADVERTISEMENTS").child().setValue(userAd);
                 startActivity(new Intent(FinalActivity.this,HomeActivity.class));
+                finish();
             }
         });
 

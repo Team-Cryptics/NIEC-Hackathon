@@ -100,6 +100,7 @@ public class CostEval extends AppCompatActivity {
                 GlobalVariables.productDescription= productDes.getText().toString();
                 GlobalVariables.productReasonSale= reasonSale.getText().toString();
                 startActivity(new Intent(CostEval.this,FinalActivity.class));
+                finish();
 
 
             }

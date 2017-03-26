@@ -39,11 +39,11 @@ public class Camera_Activity extends AppCompatActivity {
           //  Log.i("TAG",GlobalVariables.imageString);
             //SEND INTENT
 
-            if(GlobalVariables.path==1)
+            if(GlobalVariables.pathVariable==1)
             {startActivity(new Intent(Camera_Activity.this,CostEval.class));
             finish(); }
 
-           else  if(GlobalVariables.path==0)
+           else
             {startActivity(new Intent(Camera_Activity.this,NGO_Activity.class));
                 finish(); }
 
