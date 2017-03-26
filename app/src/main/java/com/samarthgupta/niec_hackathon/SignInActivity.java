@@ -16,27 +16,28 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SignInActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 0;
-    private FirebaseAuth auth;
+
     //Button bt1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
 
-        auth = FirebaseAuth.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
         if(auth.getCurrentUser()!=null)
-        {    Log.d("Auth", auth.getCurrentUser().getEmail());
+        {  //  Log.d("Auth", auth.getCurrentUser().getEmail());
             //already signed in
-            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
             startActivity(intent);
+            finish();
         }else{
+            setContentView(R.layout.activity_sign_in);
             startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().setProviders(AuthUI.FACEBOOK_PROVIDER,
                     AuthUI.EMAIL_PROVIDER,
                     AuthUI.GOOGLE_PROVIDER).build(),RC_SIGN_IN);
-
         }
-      /*  bt1.setOnClickListener(new View.OnClickListener() {
+
+        /*  bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -47,6 +48,9 @@ public class SignInActivity extends AppCompatActivity {
                 })
             }
         });*/
+
+
+
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -55,13 +59,16 @@ public class SignInActivity extends AppCompatActivity {
         {
             if(resultCode == RESULT_OK){
                 //user logged in
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
                 startActivity(intent);
-                Log.d("Auth", auth.getCurrentUser().getEmail());
+              //  Log.d("Auth", auth.getCurrentUser().getEmail());
             }
             else{
                 Log.d("Auth", "Not Authenticated");
-                }
+                Toast.makeText(this, "Not Authenticated", Toast.LENGTH_SHORT).show();
+               // Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+               // startActivity(intent);
+            }
         }
 
     }
