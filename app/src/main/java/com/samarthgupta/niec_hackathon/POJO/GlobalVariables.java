@@ -24,4 +24,5 @@ public class GlobalVariables {
     public static Bitmap m_Image;
 
 
+    public static int pathVariable;
 }

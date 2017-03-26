@@ -23,6 +23,7 @@ import com.daimajia.slider.library.SliderLayout.Transformer;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,12 +31,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+//import com.samarthgupta.niec_hackathon.POJO.GlobalVariables;
 import com.samarthgupta.niec_hackathon.POJO.GlobalVariables;
 import com.samarthgupta.niec_hackathon.POJO.PlaceOrder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener
@@ -56,12 +59,12 @@ public class HomeActivity extends AppCompatActivity
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager LayoutManager;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
 
         Log.i("TAG","in");
 

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "534513316339-l3gohansgc6h0uo94dk74gbj8cjqno7m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.samarthgupta.niec_hackathon",
+            "certificate_hash": "2fc1c48f47c8d26b342f1fdb43a776b09df8235c"
+          }
+        },
+        {
           "client_id": "534513316339-b83ptfd36h7etd2pm9muhe3qnohc7hsa.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

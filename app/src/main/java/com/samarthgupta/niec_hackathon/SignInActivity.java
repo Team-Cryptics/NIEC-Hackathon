@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,6 +27,8 @@ public class SignInActivity extends AppCompatActivity {
         if(auth.getCurrentUser()!=null)
         {    Log.d("Auth", auth.getCurrentUser().getEmail());
             //already signed in
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(intent);
         }else{
             startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().setProviders(AuthUI.FACEBOOK_PROVIDER,
                     AuthUI.EMAIL_PROVIDER,
@@ -62,6 +63,8 @@ public class SignInActivity extends AppCompatActivity {
             }
             else{
                 Log.d("Auth", "Not Authenticated");
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
             }
         }
 
