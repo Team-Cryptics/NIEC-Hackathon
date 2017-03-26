@@ -2,8 +2,6 @@ package com.samarthgupta.niec_hackathon.POJO;
 
 import android.graphics.Bitmap;
 
-import java.util.List;
-
 /**
  * Created by samarthgupta on 22/03/17.
  */
@@ -18,11 +16,12 @@ public class GlobalVariables {
     public static String productReasonSale;
     public static String deviceType;
 
-    public static int pathVariable;
+    public static int path;
 
 
     public static String ngoName;
     public static String imageString;
     public static Bitmap m_Image;
+
 
 }
