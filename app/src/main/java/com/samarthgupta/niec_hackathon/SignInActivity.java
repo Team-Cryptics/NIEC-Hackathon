@@ -23,6 +23,7 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
         auth = FirebaseAuth.getInstance();
         if(auth.getCurrentUser()!=null)
         {    Log.d("Auth", auth.getCurrentUser().getEmail());
@@ -46,9 +47,6 @@ public class SignInActivity extends AppCompatActivity {
                 })
             }
         });*/
-
-
-
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -63,9 +61,7 @@ public class SignInActivity extends AppCompatActivity {
             }
             else{
                 Log.d("Auth", "Not Authenticated");
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(intent);
-            }
+                }
         }
 
     }
