@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -16,14 +18,13 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SignInActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 0;
-
+    FirebaseAuth auth;
     //Button bt1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        FirebaseAuth auth = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
         if(auth.getCurrentUser()!=null)
         {  //  Log.d("Auth", auth.getCurrentUser().getEmail());
             //already signed in
@@ -31,10 +32,9 @@ public class SignInActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }else{
-            setContentView(R.layout.activity_sign_in);
+            setContentView(R.layout.activity_home);
             startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().setProviders(AuthUI.FACEBOOK_PROVIDER,
-                    AuthUI.EMAIL_PROVIDER,
-                    AuthUI.GOOGLE_PROVIDER).build(),RC_SIGN_IN);
+                    AuthUI.EMAIL_PROVIDER, AuthUI.GOOGLE_PROVIDER).build(),RC_SIGN_IN);
         }
 
         /*  bt1.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +61,7 @@ public class SignInActivity extends AppCompatActivity {
                 //user logged in
                 Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
                 startActivity(intent);
-              //  Log.d("Auth", auth.getCurrentUser().getEmail());
+                Log.d("Auth", auth.getCurrentUser().getEmail());
             }
             else{
                 Log.d("Auth", "Not Authenticated");

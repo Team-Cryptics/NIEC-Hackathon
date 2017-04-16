@@ -45,7 +45,6 @@ public class HomeActivity extends AppCompatActivity
 {
     SliderLayout mDemoSlider;
     BottomNavigationView bottomNavigationView;
-    Fragment fragment;
     List<PlaceOrder> orders= new ArrayList<>();
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthStateListener;
