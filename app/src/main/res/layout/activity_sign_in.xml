@@ -9,7 +9,7 @@
     tools:context="com.samarthgupta.niec_hackathon.SignInActivity">
 
     <TextView
-        android:text="@string/hi_fucking_user"
+        android:text="Creation Team Cryptics"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
